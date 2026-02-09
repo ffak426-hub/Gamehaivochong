@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Kho Face Launcher</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#020617;
+color:white;
+display:flex;
+}
+
+/* sidebar */
+.sidebar{
+width:220px;
+background:#020617;
+padding:15px;
+border-right:2px solid #22c55e;
+}
+
+.sidebar h2{color:#22c55e;}
+.sidebar div{
+padding:8px;
+cursor:pointer;
+border-radius:6px;
+}
+.sidebar div:hover{background:#111827;}
+
+/* main */
+.main{
+flex:1;
+padding:20px;
+}
+
+/* search */
+#search{
+width:100%;
+padding:10px;
+border:none;
+border-radius:8px;
+margin-bottom:20px;
+background:#0f172a;
+color:white;
+}
+
+/* grid */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:15px;
+}
+
+/* card */
+.card{
+background:#0f172a;
+padding:10px;
+border-radius:12px;
+text-align:center;
+transition:.2s;
+box-shadow:0 0 10px black;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #22c55e;
+}
+
+.card img{
+width:100%;
+border-radius:8px;
+cursor:pointer;
+}
+
+.card button{
+width:100%;
+padding:8px;
+background:#22c55e;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+}
+
+/* popup */
+#popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+#popup img{
+max-width:80%;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<h2>📁 Kho Face</h2>
+<div>Tất cả</div>
+<div>Ultra Face</div>
+<div onclick="location.href='Pes.html'">⚽ PES Launcher</div>
+</div>
+
+<div class="main">
+
+<h1 style="color:#22c55e">🎮 Face Launcher PES 2021</h1>
+
+<input id="search" placeholder="🔎 Tìm face..." onkeyup="searchFace()">
+
+<div class="grid" id="grid">
+
+<div class="card">
+<img src="Pictures/PESFACE.png" onclick="showImg(this.src)">
+<p>ULTRA FACE PES 2021 SEASONS 2026</p>
+<a href="https://drive.google.com/drive/folders/1kv7qCYJ9QdJP0tAex5TTr_5rjw8wV0dj">
+<button>⬇ Download</button>
+</a>
+</div>
+
+<div class="card">
+<img src="Pictures/PESFACE.png" onclick="showImg(this.src)">
+<p>WEB FACE CHÍNH KHO GAME HAI VỢ CHỒNG</p>
+<a href="Webface.html">
+<button>⬇ Download</button>
+</a>
+</div>
+
+</div>
+
+</div>
+
+<div id="popup" onclick="this.style.display='none'">
+<img id="popupImg">
+</div>
+
+<script>
+
+function searchFace(){
+let input=document.getElementById("search").value.toLowerCase();
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+card.style.display=
+card.innerText.toLowerCase().includes(input)?"block":"none";
+});
+}
+
+function showImg(src){
+popup.style.display="flex";
+popupImg.src=src;
+}
+
+</script>
+
+</body>
+</html>

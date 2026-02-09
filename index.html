@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Launcher Ultra PRO</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+display:flex;
+overflow:hidden;
+}
+
+/* splash */
+#splash{
+position:fixed;
+width:100%;
+height:100%;
+background:#020617;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+font-size:30px;
+color:#22c55e;
+}
+
+/* sidebar */
+.sidebar{
+width:220px;
+background:#020617;
+height:100vh;
+padding:15px;
+}
+
+.sidebar div{
+padding:10px;
+cursor:pointer;
+border-radius:6px;
+}
+
+.sidebar div:hover{
+background:#111827;
+}
+
+.main{
+flex:1;
+padding:20px;
+overflow:auto;
+}
+
+header{
+position:relative;
+padding:10px;
+border-bottom:2px solid #22c55e;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.card{
+background:#020617;
+border-radius:12px;
+overflow:hidden;
+transition:.2s;
+box-shadow:0 0 10px black;
+}
+
+.card:hover{transform:scale(1.05);}
+
+.card img{
+width:100%;
+height:140px;
+object-fit:cover;
+}
+
+.card button{
+width:100%;
+padding:10px;
+background:#22c55e;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+#dropdown{
+display:none;
+background:#020617;
+padding:10px;
+border-radius:10px;
+margin-top:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="splash">🚀 Loading Launcher...</div>
+
+<audio id="bgm" loop>
+<source src="Music/launcher.mp3">
+</audio>
+
+<div class="sidebar">
+<h2>🎮 Launcher</h2>
+<div onclick="playClick()">Trang chủ</div>
+<div onclick="playClick()">PES</div>
+<div onclick="playClick()">FC</div>
+<div onclick="playClick()">Sims</div>
+<div onclick="playClick()">Face</div>
+</div>
+
+<div class="main">
+
+<header>
+🔥 Kho Game Ultra PRO
+
+<div style="position:absolute;right:10px;top:10px;">
+<img id="userAvatar" style="width:40px;height:40px;border-radius:50%;cursor:pointer;">
+<div id="dropdown">
+<p id="userName"></p>
+<input type="file" onchange="changeAvatar(event)">
+<button onclick="toggleMusic()">🎵 Nhạc</button>
+<button onclick="logout()">Đăng xuất</button>
+</div>
+</div>
+
+</header>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2195250/header.jpg">
+<a href="fc24.html"><button onclick="fakeLoad()">FC 24</button></a>
+</div>
+
+<div class="card">
+<img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2669320/header.jpg">
+<a href="fc25.html"><button onclick="fakeLoad()">FC 25</button></a>
+</div>
+
+<div class="card">
+<img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1222670/header.jpg">
+<a href="thesims4.html"><button onclick="fakeLoad()">The Sims 4</button></a>
+</div>
+
+<div class="card">
+<img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1259970/header.jpg">
+<a href="Pes.html"><button onclick="fakeLoad()">PES</button></a>
+</div>
+
+<div class="card">
+<img src="Pictures/PESFACE.png">
+<a href="FACES.html"><button onclick="fakeLoad()">PES FACE</button></a>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* login check */
+if(localStorage.getItem("login")!=="true"){
+window.location="dangnhap.html";
+}
+
+/* splash */
+setTimeout(()=>{
+document.getElementById("splash").style.display="none";
+},1500);
+
+/* user */
+let avatar=localStorage.getItem("avatar")||"Pictures/user.png";
+let username=localStorage.getItem("username")||"Gamer";
+
+userAvatar.src=avatar;
+userName.innerText=username;
+
+userAvatar.onclick=()=>{
+dropdown.style.display=
+dropdown.style.display==="block"?"none":"block";
+};
+
+function logout(){
+localStorage.clear();
+window.location="dangnhap.html";
+}
+
+function changeAvatar(e){
+let reader=new FileReader();
+reader.onload=function(){
+localStorage.setItem("avatar",reader.result);
+userAvatar.src=reader.result;
+};
+reader.readAsDataURL(e.target.files[0]);
+}
+
+/* fake load game */
+function fakeLoad(){
+document.getElementById("splash").style.display="flex";
+setTimeout(()=>{
+document.getElementById("splash").style.display="none";
+},800);
+}
+
+/* music */
+function toggleMusic(){
+let m=document.getElementById("bgm");
+m.paused?m.play():m.pause();
+}
+
+/* sidebar click sound */
+function playClick(){
+let m=document.getElementById("bgm");
+if(m.paused)m.play();
+}
+
+</script>
+
+</body>
+</html>

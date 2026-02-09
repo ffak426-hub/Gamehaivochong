@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>PES Face Storage ULTRA</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#020617;
+color:#e5e7eb;
+display:flex;
+}
+
+/* sidebar */
+.sidebar{
+width:220px;
+background:#020617;
+border-right:2px solid #22c55e;
+padding:15px;
+}
+
+.sidebar h2{color:#22c55e}
+.sidebar div{
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+}
+.sidebar div:hover{
+background:#111827;
+}
+
+/* main */
+.main{
+flex:1;
+padding:20px;
+}
+
+/* header */
+header{
+background:rgba(15,23,42,.8);
+backdrop-filter:blur(8px);
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:0 0 20px black;
+}
+
+header h1{
+margin:0;
+color:#22c55e;
+}
+
+/* search */
+#search{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:none;
+font-size:16px;
+margin-top:15px;
+background:#020617;
+color:white;
+}
+
+/* grid */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:20px;
+}
+
+/* card */
+.card{
+background:#020617;
+border-radius:12px;
+padding:10px;
+text-align:center;
+box-shadow:0 0 15px black;
+text-decoration:none;
+color:inherit;
+transition:.25s;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #22c55e;
+}
+
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+}
+
+.card h3{
+margin:10px 0 5px;
+color:#22c55e;
+font-size:15px;
+}
+
+/* badge */
+.badge{
+position:absolute;
+top:8px;
+left:8px;
+background:#22c55e;
+color:#022c22;
+padding:3px 6px;
+border-radius:5px;
+font-size:11px;
+}
+
+/* popup */
+#popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+#popup img{
+max-width:80%;
+border-radius:12px;
+}
+
+/* footer */
+footer{
+text-align:center;
+padding:15px;
+background:#020617;
+color:#9ca3af;
+margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<h2>📁 FACE LAUNCHER</h2>
+
+</div>
+
+<div class="main">
+
+<header>
+<h1>🎮 PES FACE STORAGE ULTRA</h1>
+<p>Kho lưu trữ Face PES cá nhân</p>
+<input id="search" type="text" placeholder="🔍 Tìm cầu thủ..." onkeyup="searchPlayer()">
+</header>
+
+<div class="grid">
+
+<a href="https://modsfire.com/9TV5KpX6i41FNHj" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="Faces/Olise 1.jpg"><h3>Olise – Face Alt</h3></a>
+<a href="https://modsfire.com/04DgBhtk4sgDA05" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="Faces/olise.png"><h3>Olise – Face 2024</h3></a>
+<a href="https://sharemods.com/29qef02ctprw/PES_2021_HAALAND_2023_BY_N1KK_FACEMAKER.rar.html" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="Faces/Halaand1.jpg"><h3>Haaland – Face</h3></a>
+<a href="https://modsfire.com/m3y1I758JXA8wmo" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="Faces/Szoboszlai 1.jpg"><h3>Szoboszlai – Face 2024</h3></a>
+<a href="https://modsfire.com/jmy72h93ae7u5Dt" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="Faces/Szoboszlai 2.jpg"><h3>Szoboszlai – Face 2025</h3></a>
+<a href="https://sharemods.com/fk0xro4yjyel/(PES_2021)_Lamine_Yamal_v3_by_RP_Facemaker.rar.html" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="Faces/Yamal 1.webp"><h3>Lamine Yamal – Face</h3></a>
+<a href="https://modsfire.com/4P168sdbLXGFk26" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://pes-files.com/wp-content/uploads/2024/05/PES-2021-Son-Heung-min-17.02.24.jpg"><h3>Son – Face</h3></a>
+<a href="https://modsfire.com/zt96nid7TSy23mc" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://pes-files.com/wp-content/uploads/2023/04/PES-2021-Kaoru-Mitoma-2023.jpg"><h3>Mitoma – Face</h3></a>
+<a href="https://sharemods.com/o6kvabyl7dqs/142212.rar.html" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7zXD1QhL7JpJ1D0VmkmStlva-xmbjoSDM4pQB8SZY3GXlxaTZfyD_RJHtndzX4zxXafDxJzNIiagHgszDVOL9heyoZMWA09e2gvWS7mFtq1-l-fMjv5mBzEliiyPFLhy4oJWdrjC9zBzL3C2GHGEFuf7YGAramXi9AUjL74-C5wE8SzcxmPgapThr-8ow/s16000/waoltemart.png"><h3>Woltemade – Face</h3></a>
+<a href="https://modsfire.com/Rx7H1En0v8afR85" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://pes-files.com/wp-content/uploads/2025/08/1-257.jpg"><h3>Ekitike – Face</h3></a>
+<a href="https://modsfire.com/1ftUr36mxCh8yNt" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://pes-files.com/wp-content/uploads/2025/06/PES-2021-Nico-Williams-2025.jpg"><h3>Nico Williams – Face</h3></a>
+<a href="https://modsfire.com/pae0Qmtx5biHR2w" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://pes-files.com/wp-content/uploads/2025/09/1-269.jpg"><h3>Mbappé – Face</h3></a>
+<a href="https://modsfire.com/54SIo2t4N1zVuE6" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://pes-files.com/wp-content/uploads/2024/02/PES-2021-Vinicius-Junior-2024.jpg"><h3>Vinícius – Face</h3></a>
+<a href="https://sharemods.com/iy030ry15u30/Facepack_Neymar_by_Kodigo_Facemaker___40_PES_2021__41_.rar.html" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjltgSW-9aMvsY-8xjreKVE1h_oVbM5OauzbKMsoQRuEDRyPJtnMCNWNv5wVl62MYMjoX_wLMvnZ9nUO-GkklOaMmq0UrR2L9jDpuG9YONHnLM8yg6A5jddkQyKD38O9_stfo0ebY3BFK_dbUFUlZufgr-vANy3ju5yJtV7wGAQAtN8e_Pz7xc9yAuNZMM/s16000-rw/413933096_1128818578512738_3680587219113402273_n.jpg"><h3>Neymar – Face</h3></a>
+<a href="https://modsfire.com/T6hVj7vrb4TsFFO" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://pes-files.com/wp-content/uploads/2024/12/PES-2021-Cristiano-Ronaldo-Faces-2002-25.jpg"><h3>Ronaldo – Face</h3></a>
+<a href="https://www.mediafire.com/file/7rco10gljaqf97k/Alexander+Isak+Fifa+to+Pes+2021+by+Prince7amiz.rar/file" class="card player"><span class="badge">FACE</span><img onclick="showImg(this.src)" src="https://blogger.googleusercontent.com/img/a/AVvXsEgn6jOBMYyROQxMuL14Q0q0xfmCtS_57mP_D2FLA1aEm4z0PhdgEs2IJuzTxUpWX2PFjE-Ttm64VD72Gc4kEQ7MHcRsszKIPRmSkrR3BQL2I3lry4d8NWxr__BwgEa36Dej3rw9m9UbSEH7qBft-99nOImVxdL0BqRj37Mmhu-PmuZS7l3c7EktR9nCQQ=w640-h360-rw"><h3>Isak – Face</h3></a>
+
+</div>
+
+<footer>
+© 2026 PES Face Storage | Personal use
+</footer>
+
+</div>
+
+<div id="popup" onclick="this.style.display='none'">
+<img id="popupImg">
+</div>
+
+<script>
+function searchPlayer(){
+let input=document.getElementById("search").value.toLowerCase();
+let players=document.getElementsByClassName("player");
+for(let p of players){
+p.style.display=p.innerText.toLowerCase().includes(input)?"block":"none";
+}
+}
+
+function showImg(src){
+popup.style.display="flex";
+popupImg.src=src;
+}
+</script>
+
+</body>
+</html>

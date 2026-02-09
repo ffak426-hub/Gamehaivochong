@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Launcher Ultra Next Level</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url("Pictures/BG.png") center/cover no-repeat;
+}
+
+.box{
+width:370px;
+padding:30px;
+border-radius:18px;
+background:rgba(2,6,23,.9);
+color:white;
+text-align:center;
+box-shadow:0 0 35px black;
+}
+
+.avatar{
+width:100px;
+height:100px;
+border-radius:50%;
+margin:auto;
+background:url("Pictures/user.png") center/cover;
+border:3px solid #22c55e;
+margin-bottom:10px;
+cursor:pointer;
+position:relative;
+}
+
+.avatar span{
+position:absolute;
+bottom:-22px;
+left:50%;
+transform:translateX(-50%);
+font-size:12px;
+color:#22c55e;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:none;
+border-radius:8px;
+background:#020617;
+color:white;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+background:#22c55e;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+a{color:#22c55e;cursor:pointer;font-size:14px;}
+
+#loading{
+display:none;
+margin-top:10px;
+height:6px;
+background:#111;
+border-radius:5px;
+overflow:hidden;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:#22c55e;
+animation:load 1.5s forwards;
+}
+
+@keyframes load{to{width:100%}}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="avatar" onclick="uploadAvatar()">
+<span>Thêm avatar ở đây</span>
+</div>
+<input type="file" id="file" style="display:none" onchange="changeAvatar(event)">
+
+<h2 id="title">🎮 LAUNCHER ULTRA</h2>
+
+<input id="user" placeholder="Tài khoản">
+<input id="pass" type="password" placeholder="Mật khẩu">
+
+<!-- confirm password -->
+<input id="pass2" type="password" placeholder="Xác nhận mật khẩu" style="display:none">
+
+<button onclick="action()">Đăng nhập</button>
+
+<p><a onclick="toggleMode()">Chưa có tài khoản? Đăng ký</a></p>
+
+<div id="loading"><div class="bar"></div></div>
+
+<p id="msg"></p>
+
+</div>
+
+<script>
+
+let mode="login";
+
+if(localStorage.getItem("login")==="true"){
+window.location="index.html";
+}
+
+function toggleMode(){
+if(mode==="login"){
+mode="register";
+title.innerText="📝 Đăng ký Launcher";
+document.querySelector("button").innerText="Đăng ký";
+pass2.style.display="block";
+}else{
+mode="login";
+title.innerText="🎮 LAUNCHER ULTRA";
+document.querySelector("button").innerText="Đăng nhập";
+pass2.style.display="none";
+}
+}
+
+function action(){
+
+let u=user.value.trim();
+let p=pass.value.trim();
+let p2=pass2.value.trim();
+
+if(u===""||p===""){
+msg.innerText="Nhập đủ tài khoản bro 😭";
+return;
+}
+
+let acc=JSON.parse(localStorage.getItem("acc"));
+
+if(mode==="register"){
+
+if(p!==p2){
+msg.innerText="Mật khẩu xác nhận không khớp 😭";
+return;
+}
+
+localStorage.setItem("acc",JSON.stringify({user:u,pass:p}));
+msg.innerText="Đăng ký thành công 😎";
+mode="login";
+pass2.style.display="none";
+return;
+}
+
+if(acc && acc.user===u && acc.pass===p){
+
+loading.style.display="block";
+
+localStorage.setItem("login","true");
+localStorage.setItem("username",u);
+
+if(!localStorage.getItem("avatar")){
+localStorage.setItem("avatar","Pictures/user.png");
+}
+
+setTimeout(()=>{
+window.location="index.html";
+},1500);
+
+}else{
+msg.innerText="Sai tài khoản rồi bro 😭";
+}
+
+}
+
+function uploadAvatar(){
+file.click();
+}
+
+function changeAvatar(e){
+let file=e.target.files[0];
+let reader=new FileReader();
+reader.onload=function(){
+localStorage.setItem("avatar",reader.result);
+document.querySelector(".avatar").style.background=
+'url("'+reader.result+'") center/cover';
+};
+reader.readAsDataURL(file);
+}
+
+let av=localStorage.getItem("avatar");
+if(av){
+document.querySelector(".avatar").style.background=
+'url("'+av+'") center/cover';
+}
+
+</script>
+
+</body>
+</html>

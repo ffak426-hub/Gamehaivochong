@@ -6,8 +6,13 @@
 
 <style>
 body{
+box-sizing:border-box;
 margin:0;
+padding:0;
 font-family:Arial;
+}
+
+body{
 height:100vh;
 display:flex;
 justify-content:center;
@@ -16,75 +21,64 @@ background:url("Pictures/BG.png") center/cover no-repeat;
 }
 
 .box{
-width:370px;
-padding:30px;
+width:380px;
+padding:35px;
 border-radius:18px;
-background:rgba(2,6,23,.9);
+background:rgba(2,6,23,0.92);
 color:white;
 text-align:center;
-box-shadow:0 0 35px black;
+box-shadow:0 0 40px rgba(0,0,0,0.8);
+display:flex;
+flex-direction:column;
+gap:12px;
 }
 
 .avatar{
-width:100px;
-height:100px;
+width:95px;
+height:95px;
 border-radius:50%;
 margin:auto;
 background:url("Pictures/user.png") center/cover;
 border:3px solid #22c55e;
-margin-bottom:10px;
-cursor:pointer;
-position:relative;
 }
 
-.avatar span{
-position:absolute;
-bottom:-22px;
-left:50%;
-transform:translateX(-50%);
-font-size:12px;
-color:#22c55e;
+h2{
+margin-bottom:5px;
 }
 
 input{
 width:100%;
-padding:12px;
-margin:8px 0;
+padding:13px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 background:#020617;
 color:white;
+font-size:15px;
 }
 
 button{
 width:100%;
-padding:12px;
-margin-top:10px;
+padding:13px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 background:#22c55e;
 color:white;
+font-size:15px;
 cursor:pointer;
-font-weight:bold;
+transition:.2s;
 }
 
-a{color:#22c55e;cursor:pointer;font-size:14px;}
-
-#loading{
-display:none;
-margin-top:10px;
-height:6px;
-background:#111;
-border-radius:5px;
-overflow:hidden;
+button:hover{
+background:#16a34a;
+transform:scale(1.03);
 }
 
-.bar{
-height:100%;
-width:0%;
-background:#22c55e;
-animation:load 1.5s forwards;
+#msg{
+min-height:20px;
+font-size:14px;
+color:#f87171;
 }
+
 
 @keyframes load{to{width:100%}}
 </style>
@@ -212,4 +206,5 @@ document.querySelector(".avatar").style.background=
 
 </body>
 </html>
+
 
